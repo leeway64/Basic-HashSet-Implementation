@@ -1,7 +1,8 @@
+# 11/21/2020
 class HashSet:
     def __init__(self, capacity):
         self.__data = []
-        self.__hash_table_length = capacity / 0.75
+        self.__hash_table_length = capacity / 0.75  # Load factor: 0.75
         self.__size = 0
 
     def add(self, value):
@@ -9,6 +10,18 @@ class HashSet:
             i = self.__index_of(value)
             self.data[i] = self.HashNode(value, self.data[i])
             self.__size += 1
+
+    def remove(self, value):
+        if self.contains(value):
+            i = self.__indexOf(value)
+            if self.__data[i] == value:
+                self.__data[i] = self.__data[i].next
+            else:
+                current = self.__data[i]
+                while current.next.data != value:
+                    current = current.next
+                current.next = current.next.next
+            self.__size -= 1
 
     def contains(self, value):
         i = self.__index_of(value)
@@ -19,7 +32,7 @@ class HashSet:
             current = current.next
         return False
 
-    def __size(self):
+    def size(self):
         return self.__size
 
     def __index_of(self, value):
