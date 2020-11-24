@@ -1,4 +1,4 @@
-# 11/22/2020
+# 11/24/2020
 class HashSet:
     def __init__(self, capacity):
         self.__data = []
@@ -8,11 +8,12 @@ class HashSet:
         self.__initialize_data(int(self.__hash_table_length))
         self.__size = 0
 
-    def add(self, value):
-        if not self.contains(value):
-            i = self.__index_of(value)
-            self.__data[i] = self.__HashNode(value, self.__data[i])
-            self.__size += 1
+    def add(self, *values):
+        for value in values:
+            if not self.contains(value):
+                i = self.__index_of(value)
+                self.__data[i] = self.__HashNode(value, self.__data[i])
+                self.__size += 1
 
     def remove(self, value):
         if self.contains(value):
