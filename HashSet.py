@@ -1,4 +1,5 @@
-# 11/24/2020
+# A rudimentary implementation of HashSet
+# 11/27/2020
 class HashSet:
     def __init__(self, capacity):
         self.__data = []
