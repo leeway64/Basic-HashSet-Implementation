@@ -1,11 +1,9 @@
 # A rudimentary implementation of HashSet
-# 11/27/2020
+# 11/28/2020
 class HashSet:
     def __init__(self, capacity):
         self.__data = []
         self.__hash_table_length = int(capacity / 0.75)  # Load factor: 0.75
-        # print(self.__hash_table_length)
-        # print(capacity)
         self.__initialize_data(self.__hash_table_length)
         self.__size = 0
 
@@ -41,7 +39,6 @@ class HashSet:
         return self.__size
 
     def __index_of(self, value):
-        # print(int(abs(hash(value) % self.__hash_table_length)))
         return int(abs(hash(value) % self.__hash_table_length))  # Hash code is the same for ints
 
     def __initialize_data(self, table_length):
